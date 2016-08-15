@@ -36,9 +36,14 @@
         <item name="android:itemTextAppearance">@style/OptionsMenuTextColor</item>
     </style>
 
-    <!-- - HamburgerIconStyle-->
+    <!-- - HamburgerIconStyle for home button-->
     <style name="HamburgerIconStyle" parent="Widget.AppCompat.DrawerArrowToggle">
         <item name="color">@color/icons</item>
     </style>
 
+    <!--noactionbar-->
+    <style name="AppTheme.NoActionBar" parent="AppTheme">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+    </style>
 </resources>
