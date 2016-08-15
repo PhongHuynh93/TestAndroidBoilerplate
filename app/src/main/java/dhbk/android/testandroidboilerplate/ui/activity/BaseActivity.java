@@ -31,7 +31,7 @@ public class BaseActivity  extends AppCompatActivity {
         return AndroidBoilerplateApplication.get(this).getMApplicationComponent();
     }
 
-    // listen when click an icon in toolbar
+    // listen when click an home icon in toolbar, if child override it, call super
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
