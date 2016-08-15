@@ -6,6 +6,9 @@ import android.view.MenuItem;
 
 import dhbk.android.testandroidboilerplate.AndroidBoilerplateApplication;
 import dhbk.android.testandroidboilerplate.injection.component.ActivityComponent;
+import dhbk.android.testandroidboilerplate.injection.component.ApplicationComponent;
+import dhbk.android.testandroidboilerplate.injection.component.DaggerActivityComponent;
+import dhbk.android.testandroidboilerplate.injection.module.ActivityModule;
 
 /**
  * Created by huynhducthanhphong on 8/15/16.
@@ -13,16 +16,22 @@ import dhbk.android.testandroidboilerplate.injection.component.ActivityComponent
 public class BaseActivity  extends AppCompatActivity {
     private ActivityComponent mActivityComponent;
 
+    // get the module for activity
     public ActivityComponent activityComponent() {
         if (mActivityComponent == null) {
             mActivityComponent = DaggerActivityComponent.builder()
                     .activityModule(new ActivityModule(this))
-                    .applicationComponent(AndroidBoilerplateApplication.get(this).getComponent())
+                    .applicationComponent(getApplicationComponent())
                     .build();
         }
         return mActivityComponent;
     }
 
+    protected ApplicationComponent getApplicationComponent() {
+        return AndroidBoilerplateApplication.get(this).getMApplicationComponent();
+    }
+
+    // listen when click an icon in toolbar
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 

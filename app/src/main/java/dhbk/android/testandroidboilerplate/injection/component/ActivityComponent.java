@@ -14,7 +14,7 @@ import dhbk.android.testandroidboilerplate.ui.activity.MainActivity;
 public interface ActivityComponent {
 //    void inject(LauncherActivity launcherActivity);
     void inject(MainActivity mainActivity);
-//    declare addition activity
+//    todo declare addition activity
 //    void inject(CharacterActivity characterActivity);
 //    void inject(DetailActivity detailActivity);
 //    void inject(DetailFragment detailFragment);
