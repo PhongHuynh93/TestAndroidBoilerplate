@@ -34,7 +34,7 @@ public class ApplicationModule {
         return mApplication;
     }
 
-    // todo declare retrofit service
+    //  declare retrofit service
     @Provides
     @Singleton
     AndroidBoilerplateService provideAndroidBoilerplateService() {

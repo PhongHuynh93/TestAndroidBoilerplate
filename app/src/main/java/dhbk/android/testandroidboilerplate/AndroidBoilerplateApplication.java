@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 
 import dhbk.android.testandroidboilerplate.injection.component.ApplicationComponent;
+import dhbk.android.testandroidboilerplate.injection.component.DaggerApplicationComponent;
 import dhbk.android.testandroidboilerplate.injection.module.ApplicationModule;
 import lombok.Getter;
 import lombok.Setter;

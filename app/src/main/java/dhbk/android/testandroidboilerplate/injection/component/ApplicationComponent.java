@@ -26,7 +26,7 @@ public interface ApplicationComponent {
     Application application();
 
     // create retrofit service
-    AndroidBoilerplateService androidBoilerplateService();
-    PreferencesHelper preferencesHelper();
-    DataManager dataManager();
+//    AndroidBoilerplateService androidBoilerplateService();
+//    PreferencesHelper preferencesHelper();
+//    DataManager dataManager();
 }
