@@ -3,14 +3,13 @@ package dhbk.android.testandroidboilerplate.injection;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
-import javax.inject.Qualifier;
+import javax.inject.Scope;
 
 /**
  * Created by huynhducthanhphong on 8/15/16.
- *  - Qualifier để phân biệt 2 dependence
+ *  scope - để tạo subcomponent
  */
-
-@Qualifier
+@Scope
 @Retention(RetentionPolicy.RUNTIME)
-public @interface Remote {
+public @interface PerActivity {
 }
