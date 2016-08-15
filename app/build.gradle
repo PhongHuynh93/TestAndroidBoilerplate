@@ -34,8 +34,7 @@ dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:24.1.1'
-
-//    espresso
+    //    espresso
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2') {
         // Necessary if your app targets Marshmallow (since Espresso
         // hasn't moved to Marshmallow yet)
@@ -50,25 +49,22 @@ dependencies {
     compile 'com.jakewharton.timber:timber:4.2.0'
     // add auto getter and setter
     compile 'org.projectlombok:lombok:1.16.10'
-
-//    dagger
+    //    dagger
     apt 'com.google.dagger:dagger-compiler:2.5'
     compile 'com.google.dagger:dagger:2.5'
     provided 'javax.annotation:jsr250-api:1.0'
-
-//    retrofit + rxjava
+    //    retrofit + rxjava
     compile 'com.google.code.gson:gson:2.6.2'
     compile 'com.squareup.retrofit2:retrofit:2.1.0'
     compile 'com.squareup.retrofit2:converter-gson:2.1.0'
-
     compile 'io.reactivex:rxjava:1.1.6'
     compile 'io.reactivex:rxandroid:1.2.1'
     compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
-
-//    debug retrofit
+    //    debug retrofit
     compile 'com.squareup.okhttp3:logging-interceptor:3.3.1'
-
     // butterknife
     compile 'com.jakewharton:butterknife:8.2.1'
     apt 'com.jakewharton:butterknife-compiler:8.2.1'
+    compile 'com.android.support:design:24.1.1'
+    compile 'com.android.support:recyclerview-v7:24.1.1'
 }
