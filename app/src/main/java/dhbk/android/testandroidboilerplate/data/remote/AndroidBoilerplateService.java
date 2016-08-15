@@ -1,7 +1,6 @@
 package dhbk.android.testandroidboilerplate.data.remote;
 
 import android.content.Context;
-import android.database.Observable;
 
 import dhbk.android.testandroidboilerplate.BuildConfig;
 import okhttp3.OkHttpClient;
@@ -11,6 +10,7 @@ import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
+import rx.Observable;
 
 /**
  * Created by huynhducthanhphong on 8/15/16.
