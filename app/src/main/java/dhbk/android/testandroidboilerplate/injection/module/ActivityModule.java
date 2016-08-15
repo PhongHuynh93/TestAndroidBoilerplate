@@ -9,6 +9,7 @@ import dhbk.android.testandroidboilerplate.injection.ActivityContext;
 
 /**
  * Created by huynhducthanhphong on 8/15/16.
+ * provide context for activity
  */
 @Module
 public class ActivityModule {
