@@ -27,7 +27,7 @@ public class BaseActivity  extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         /**
-         * fixme You should return true if you process the menu item and return super.onOptionsItemSelected(item) if you don't.
+         *  You should return true if you process the menu item and return super.onOptionsItemSelected(item) if you don't.
          * boolean Return false to allow normal menu processing to proceed, true to consume it here.
          */
         switch (item.getItemId()) {

@@ -7,6 +7,7 @@ import javax.inject.Scope;
 
 /**
  * Created by huynhducthanhphong on 8/15/16.
+ *  scope - để tạo subcomponent
  */
 @Scope
 @Retention(RetentionPolicy.RUNTIME)

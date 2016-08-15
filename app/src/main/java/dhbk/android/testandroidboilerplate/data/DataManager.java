@@ -22,7 +22,7 @@ public class DataManager {
     @Getter
     private final PreferencesHelper mPreferencesHelper;
 
-    // // FIXME: 8/15/16 should put this in interface other than class
+    // // : 8/15/16 should put this in interface other than class
     @Inject
     public DataManager(@Local AndroidBoilerplateService watchTowerService,
                        @Remote PreferencesHelper preferencesHelper) {
