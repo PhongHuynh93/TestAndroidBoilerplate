@@ -4,14 +4,28 @@ import android.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
+import dhbk.android.testandroidboilerplate.AndroidBoilerplateApplication;
+import dhbk.android.testandroidboilerplate.injection.component.ActivityComponent;
+
 /**
  * Created by huynhducthanhphong on 8/15/16.
  */
 public class BaseActivity  extends AppCompatActivity {
+    private ActivityComponent mActivityComponent;
 
+    public ActivityComponent activityComponent() {
+        if (mActivityComponent == null) {
+            mActivityComponent = DaggerActivityComponent.builder()
+                    .activityModule(new ActivityModule(this))
+                    .applicationComponent(AndroidBoilerplateApplication.get(this).getComponent())
+                    .build();
+        }
+        return mActivityComponent;
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
         /**
          * fixme You should return true if you process the menu item and return super.onOptionsItemSelected(item) if you don't.
          * boolean Return false to allow normal menu processing to proceed, true to consume it here.
