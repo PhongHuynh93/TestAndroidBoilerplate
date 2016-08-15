@@ -3,6 +3,7 @@ package dhbk.android.testandroidboilerplate.data.remote;
 import android.content.Context;
 
 import dhbk.android.testandroidboilerplate.BuildConfig;
+import dhbk.android.testandroidboilerplate.data.model.Character;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;

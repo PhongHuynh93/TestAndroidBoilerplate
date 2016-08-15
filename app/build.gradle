@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.neenbedankt.android-apt'
+apply plugin: 'me.tatarka.retrolambda' // make sure to apply last!
 
 android {
     compileSdkVersion 24
@@ -20,6 +21,11 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 
 }
@@ -61,4 +67,6 @@ dependencies {
 
 //    debug retrofit
     compile 'com.squareup.okhttp3:logging-interceptor:3.3.1'
+
+    //
 }

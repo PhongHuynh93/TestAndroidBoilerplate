@@ -6,12 +6,12 @@ import java.util.List;
 import javax.inject.Inject;
 
 import dhbk.android.testandroidboilerplate.data.local.PreferencesHelper;
+import dhbk.android.testandroidboilerplate.data.model.Character;
 import dhbk.android.testandroidboilerplate.data.remote.AndroidBoilerplateService;
 import dhbk.android.testandroidboilerplate.injection.Local;
 import dhbk.android.testandroidboilerplate.injection.Remote;
 import lombok.Getter;
 import rx.Observable;
-import rx.functions.Func1;
 
 /**
  * Created by huynhducthanhphong on 8/15/16.
@@ -37,12 +37,14 @@ public class DataManager {
             characterIds.add(id);
         }
 
-        // TODO: 8/15/16 understand this
-        return Observable.from(characterIds).concatMap(new Func1<Integer, Observable<Character>>() {
-            @Override
-            public Observable<Character> call(Integer integer) {
-                return mAndroidBoilerplateService.getCharacter(integer);
-            }
-        }).toList();
+        // : 8/15/16 understand this
+        /**
+         * @see <a href="http://fernandocejas.com/2015/01/11/rxjava-observable-tranformation-concatmap-vs-flatmap/">Giong va khac giữa flatmap và concat map</a>
+         *
+         * concatmap quan tâm thứ tự
+         *
+         * hàm này sẽ phát ra từng cái interger sau đo lấy character tương tứng với từng interger nó, sau đó gom lại thành 1 list Character
+         */
+        return Observable.from(characterIds).concatMap(mAndroidBoilerplateService::getCharacter).toList();
     }
 }
