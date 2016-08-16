@@ -50,7 +50,8 @@ dependencies {
     // add auto getter and setter
     compile 'org.projectlombok:lombok:1.16.10'
     //    dagger
-    apt 'com.google.dagger:dagger-compiler:2.5'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.5'
+////    apt 'com.google.dagger:dagger-compiler:2.5'
     compile 'com.google.dagger:dagger:2.5'
     provided 'javax.annotation:jsr250-api:1.0'
     //    retrofit + rxjava

@@ -22,13 +22,13 @@ import dhbk.android.testandroidboilerplate.R;
 import dhbk.android.testandroidboilerplate.data.DataManager;
 import dhbk.android.testandroidboilerplate.ui.adapter.CharacterAdapter;
 import dhbk.android.testandroidboilerplate.utils.DataUtils;
+import dhbk.android.testandroidboilerplate.utils.DialogFactory;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;
 import timber.log.Timber;
 import dhbk.android.testandroidboilerplate.data.model.Character;
-
 
 public class MainActivity extends BaseActivity {
 //    findviewbyid
@@ -111,15 +111,15 @@ public class MainActivity extends BaseActivity {
         // : 8/15/16 9d - declare swipelayout
         mSwipeRefresh.setColorSchemeResources(R.color.primary);
         mSwipeRefresh.setOnRefreshListener(() -> {
-            // TODO: 8/15/16 9e - when swipe, reset data to empty, load char again
-//            mCharacterAdapter.setCharacters(new ArrayList<Character>());
-//            loadCharacters();
+//             : 8/15/16 9e - when swipe, reset data to empty, load char again
+            mCharacterAdapter.setCharacters(new ArrayList<Character>());
+            loadCharacters();
         });
     }
 
 
     private void loadCharacters() {
-        // TODO: 8/15/16 10a - check the network first before load datas to list
+        // : 8/15/16 10a - check the network first before load datas to list
         if (DataUtils.isNetworkAvailable(this)) {
             int[] characterIds = getResources().getIntArray(R.array.characters);
             mSubscriptions.add(mDataManager.getCharacters(characterIds)
@@ -131,7 +131,7 @@ public class MainActivity extends BaseActivity {
 
                         }
 
-                        // TODO: 8/15/16 10b if fail, print the log, remove progress bar, force stop refresh, create a dialog to inform to user
+                        // : 8/15/16 10b if fail, print the log, remove progress bar, force stop refresh, create a dialog to inform to user
 
                         @Override
                         public void onError(Throwable error) {
@@ -141,7 +141,7 @@ public class MainActivity extends BaseActivity {
                             DialogFactory.createSimpleErrorDialog(MainActivity.this).show();
                         }
 
-                        // TODO: 8/15/16 10c - update adapter
+                        // : 8/15/16 10c - update adapter
                         @Override
                         public void onNext(List<Character> characters) {
                             mProgressIndicator.setVisibility(View.GONE);
@@ -150,7 +150,7 @@ public class MainActivity extends BaseActivity {
                         }
                     }));
         }
-        // todo 10d if there is not a network, remove progressbar and swiperefresh + create a dialog
+        //  10d if there is not a network, remove progressbar and swiperefresh + create a dialog
         else {
             mProgressIndicator.setVisibility(View.GONE);
             mSwipeRefresh.setRefreshing(false);

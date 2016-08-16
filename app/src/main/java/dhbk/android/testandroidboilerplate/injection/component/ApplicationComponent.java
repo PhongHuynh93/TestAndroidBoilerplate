@@ -7,6 +7,8 @@ import javax.inject.Singleton;
 
 import dagger.Component;
 import dhbk.android.testandroidboilerplate.AndroidBoilerplateApplication;
+import dhbk.android.testandroidboilerplate.data.DataManager;
+import dhbk.android.testandroidboilerplate.data.local.PreferencesHelper;
 import dhbk.android.testandroidboilerplate.data.remote.AndroidBoilerplateService;
 import dhbk.android.testandroidboilerplate.injection.ApplicationContext;
 import dhbk.android.testandroidboilerplate.injection.module.ApplicationModule;
@@ -27,6 +29,6 @@ public interface ApplicationComponent {
 
     // create retrofit service
     AndroidBoilerplateService androidBoilerplateService();
-//    PreferencesHelper preferencesHelper();
-//    DataManager dataManager();
+    PreferencesHelper preferencesHelper();
+    DataManager dataManager();
 }
