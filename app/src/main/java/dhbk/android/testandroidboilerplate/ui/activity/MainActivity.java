@@ -8,9 +8,11 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ProgressBar;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -18,7 +20,11 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import dhbk.android.testandroidboilerplate.R;
 import dhbk.android.testandroidboilerplate.ui.adapter.CharacterAdapter;
+import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;
+import timber.log.Timber;
 
 public class MainActivity extends BaseActivity {
 
@@ -50,8 +56,8 @@ public class MainActivity extends BaseActivity {
         setupToolbar();
         //  9 declare recylerview
         setupRecyclerView();
-        //  todo - 10 set character to list
-//        loadCharacters();
+        //   - 10 set character to list
+        loadCharacters();
     }
 
 
@@ -100,4 +106,50 @@ public class MainActivity extends BaseActivity {
 //            loadCharacters();
         });
     }
+
+
+    private void loadCharacters() {
+        // TODO: 8/15/16 10a - check the network first before load datas to list
+        if (DataUtils.isNetworkAvailable(this)) {
+            int[] characterIds = getResources().getIntArray(R.array.characters);
+            mSubscriptions.add(mDataManager.getCharacters(characterIds)
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribeOn(Schedulers.io())
+                    .subscribe(new Subscriber<List<Character>>() {
+                        @Override
+                        public void onCompleted() {
+
+                        }
+
+                        // TODO: 8/15/16 10b if fail, print the log, remove progress bar, force stop refresh, create a dialog to inform to user
+
+                        @Override
+                        public void onError(Throwable error) {
+                            Timber.e("There was an error retrieving the characters " + error);
+                            mProgressBar.setVisibility(View.GONE);
+                            mSwipeRefresh.setRefreshing(false);
+                            DialogFactory.createSimpleErrorDialog(MainActivity.this).show();
+                        }
+
+                        // TODO: 8/15/16 10c - update adapter
+                        @Override
+                        public void onNext(List<Character> characters) {
+                            mProgressBar.setVisibility(View.GONE);
+                            mSwipeRefresh.setRefreshing(false);
+                            mCharacterAdapter.setCharacters(characters);
+                        }
+                    }));
+        }
+        // todo 10d if there is not a network, remove progressbar and swiperefresh + create a dialog
+        else {
+            mProgressBar.setVisibility(View.GONE);
+            mSwipeRefresh.setRefreshing(false);
+            DialogFactory.createSimpleOkErrorDialog(
+                    this,
+                    getString(R.string.dialog_error_title),
+                    getString(R.string.dialog_error_no_connection)
+            ).show();
+        }
+    }
+
 }

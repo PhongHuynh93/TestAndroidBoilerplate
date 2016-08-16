@@ -27,7 +27,7 @@ import static dhbk.android.testandroidboilerplate.ui.activity.CharacterActivity.
 
 /**
  * Created by huynhducthanhphong on 8/15/16.
- * todo - declre adapter
+ *  - declre adapter
  */
 public class CharacterAdapter extends RecyclerView.Adapter<CharacterAdapter.CharacterHolder> {
     private List<Character> mCharacters;
@@ -45,11 +45,12 @@ public class CharacterAdapter extends RecyclerView.Adapter<CharacterAdapter.Char
         return new CharacterHolder(view);
     }
 
-    // TODO: 8/15/16
+    // : 8/15/16
     @Override
     public void onBindViewHolder(CharacterHolder holder, int position) {
         final Context context = holder.itemView.getContext();
 
+        // load info to view holder
         final Character character = mCharacters.get(position);
         holder.nameText.setText(character.name);
         int filmCount = character.films.size();
@@ -61,6 +62,7 @@ public class CharacterAdapter extends RecyclerView.Adapter<CharacterAdapter.Char
                 .into(holder.characterImage);
 
 
+        // listen event
         holder.viewText.setOnClickListener(v -> context.startActivity(getStartIntent(context, character)));
 
         holder.characterContainer.setOnClickListener(v -> context.startActivity(getStartIntent(context, character)));
@@ -96,13 +98,13 @@ public class CharacterAdapter extends RecyclerView.Adapter<CharacterAdapter.Char
     }
 
 
-    // TODO: 8/15/16
+    // : 8/15/16
     @Override
     public int getItemCount() {
         return mCharacters.size();
     }
 
-    // TODO: 8/15/16
+    // : 8/15/16
     public static class CharacterHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.image_character)
         CircleImageView characterImage;
