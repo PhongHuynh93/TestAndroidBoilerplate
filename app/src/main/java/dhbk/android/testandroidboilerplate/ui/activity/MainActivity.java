@@ -19,15 +19,19 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import dhbk.android.testandroidboilerplate.R;
+import dhbk.android.testandroidboilerplate.data.DataManager;
 import dhbk.android.testandroidboilerplate.ui.adapter.CharacterAdapter;
+import dhbk.android.testandroidboilerplate.utils.DataUtils;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;
 import timber.log.Timber;
+import dhbk.android.testandroidboilerplate.data.model.Character;
+
 
 public class MainActivity extends BaseActivity {
-
+//    findviewbyid
     @BindView(R.id.recycler_characters)
     RecyclerView mCharactersRecycler;
     @BindView(R.id.swipe_container)
@@ -37,9 +41,15 @@ public class MainActivity extends BaseActivity {
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
 
+//    private instance
     private CompositeSubscription mSubscriptions;
+
+    // inject
     @Inject
     CharacterAdapter mCharacterAdapter;
+    @Inject
+    DataManager mDataManager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -126,7 +136,7 @@ public class MainActivity extends BaseActivity {
                         @Override
                         public void onError(Throwable error) {
                             Timber.e("There was an error retrieving the characters " + error);
-                            mProgressBar.setVisibility(View.GONE);
+                            mProgressIndicator.setVisibility(View.GONE);
                             mSwipeRefresh.setRefreshing(false);
                             DialogFactory.createSimpleErrorDialog(MainActivity.this).show();
                         }
@@ -134,7 +144,7 @@ public class MainActivity extends BaseActivity {
                         // TODO: 8/15/16 10c - update adapter
                         @Override
                         public void onNext(List<Character> characters) {
-                            mProgressBar.setVisibility(View.GONE);
+                            mProgressIndicator.setVisibility(View.GONE);
                             mSwipeRefresh.setRefreshing(false);
                             mCharacterAdapter.setCharacters(characters);
                         }
@@ -142,7 +152,7 @@ public class MainActivity extends BaseActivity {
         }
         // todo 10d if there is not a network, remove progressbar and swiperefresh + create a dialog
         else {
-            mProgressBar.setVisibility(View.GONE);
+            mProgressIndicator.setVisibility(View.GONE);
             mSwipeRefresh.setRefreshing(false);
             DialogFactory.createSimpleOkErrorDialog(
                     this,

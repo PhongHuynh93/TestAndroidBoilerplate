@@ -104,6 +104,15 @@ public class CharacterAdapter extends RecyclerView.Adapter<CharacterAdapter.Char
         return mCharacters.size();
     }
 
+    /**
+     * change the data underneath and notify change
+     * @param characters
+     */
+    public void setCharacters(List<Character> characters) {
+        mCharacters = characters;
+        notifyDataSetChanged();
+    }
+
     // : 8/15/16
     public static class CharacterHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.image_character)
