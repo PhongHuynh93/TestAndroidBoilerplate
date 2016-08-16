@@ -50,8 +50,8 @@ public class MainActivity extends BaseActivity {
         setupToolbar();
         //  9 declare recylerview
         setupRecyclerView();
-        //  10 set character to list
-        loadCharacters();
+        //  todo - 10 set character to list
+//        loadCharacters();
     }
 
 
@@ -96,8 +96,8 @@ public class MainActivity extends BaseActivity {
         mSwipeRefresh.setColorSchemeResources(R.color.primary);
         mSwipeRefresh.setOnRefreshListener(() -> {
             // TODO: 8/15/16 9e - when swipe, reset data to empty, load char again
-            mCharacterAdapter.setCharacters(new ArrayList<Character>());
-            loadCharacters();
+//            mCharacterAdapter.setCharacters(new ArrayList<Character>());
+//            loadCharacters();
         });
     }
 }
